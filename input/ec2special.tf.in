@@ -12,3 +12,6 @@
     perm: READ
   - bucket: "some-other-buckets"
     perm: ALL
+  - bucket: "${aws_s3_bucket.special_bucket.id}"
+    perm: ["s3:Put*", "s3:Get*"]
+    path: "${aws_s3_bucket.some_bucket_for_production.arn}/foo/*"

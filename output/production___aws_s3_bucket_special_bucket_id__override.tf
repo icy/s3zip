@@ -28,6 +28,26 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production___aws_s3_bucket_spe
       }
     },
     {
+      "Sid": "sid_640398036d32a878e5317f24d323e3d0",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Resource": [
+        "${aws_s3_bucket.some_bucket_for_production.arn}/foo/*"
+      ],
+      "Action": [
+        "s3:Put*",
+        "s3:Get*"
+      ],
+      "Condition": {
+        "ForAnyValue:StringLike": {
+          "aws:userid": [
+            "${var.dev_iam_role_Ec2Role_unique_id}*",
+            "${var.staging_iam_role_Ec2Role_unique_id}*"
+          ]
+        }
+      }
+    },
+    {
       "Sid": "sid_4cd133790300120921c9c27f787ea75f",
       "Effect": "Allow",
       "Principal": "*",
