@@ -1,0 +1,5 @@
+- user: "arn:aws:iam::${var.example_production_account_id}:root"
+  env: [dev]
+  do:
+  - perm: ALL
+    bucket: ["${aws_s3_bucket.some_bucket_for_production.id}"]

@@ -1,0 +1,14 @@
+- user: '*'
+  if: |
+    "ForAnyValue:StringLike": {
+      "aws:userid": [
+        "${var.dev_iam_role_Ec2Role_unique_id}*",
+        "${var.staging_iam_role_Ec2Role_unique_id}*"
+      ]
+    }
+  env: [production]
+  do:
+  - bucket: "${aws_s3_bucket.special_bucket.id}"
+    perm: READ
+  - bucket: "some-other-buckets"
+    perm: ALL

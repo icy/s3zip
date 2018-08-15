@@ -1,0 +1,12 @@
+- user:
+  - "arn:aws:iam::${var.production_account_id}:role/AthenaPowerUsers"
+  - "arn:aws:iam::${var.production_account_id}:user/george@example.us"
+  - "arn:aws:iam::${var.production_account_id}:user/laura@example.us"
+  - "arn:aws:iam::${var.production_account_id}:user/mike@example.us"
+  env: [production]
+  do:
+  - perm: READ
+    bucket:
+    - "${aws_s3_bucket.example_s3_bucket_a.id}"
+    - "${aws_s3_bucket.example_s3_bucket_b.id}"
+    - "${aws_s3_bucket.example_s3_bucket_c.id}"
