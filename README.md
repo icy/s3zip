@@ -2,6 +2,8 @@
 
 Compress AWS S3 policies and make them maintainable for human being.
 
+Compress 1200 lines of Json files into 120 lines of configuration.
+
 Output in JSON and/or Terraform.
 
 See input examples in `input/` and the output in `output/`.
