@@ -14,7 +14,7 @@ def inspect_p(p)
   users = [users] if users.is_a?(String) and (users != '*')
   does = p["do"]
   does.each do |dop|
-    buckets = dop["bucket"]
+    buckets = (dop["bucket"] || p["bucket"])
     buckets = [buckets] if buckets.is_a?(String)
     paths = dop["path"]
     paths = [paths] if paths.is_a?(String)
