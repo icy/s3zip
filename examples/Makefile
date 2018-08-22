@@ -4,11 +4,11 @@ D_OUTPUT = ./output/
 default: all
 
 .PHONY: autogen
-autogen: s3zip.rb input/*.tf.in
+autogen: ../s3zip.rb input/*.tf.in
 	@mkdir -pv "$(D_OUTPUT)"
-	@ruby -c s3zip.rb
+	@ruby -c ../s3zip.rb
 	@cat input/*.tf.in \
-		| D_OUTPUT="$(D_OUTPUT)" ruby s3zip.rb --tf
+		| D_OUTPUT="$(D_OUTPUT)" ruby ../s3zip.rb --tf
 
 .PHONY: clean
 clean:
