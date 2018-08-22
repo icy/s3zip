@@ -48,6 +48,11 @@ array_of_string       <=  "[" string{,string} "]"
 
 1. `s3zip` parses its input (`s3zip_policies`) and generates policies for
     each bucket found from all policies.
+1. Output file name is sanitized from the bucket name specified in the policies,
+   and prefixed with environment name.
+1. `s3zip` writes its output to the directory specified in environment variable `D_OUTPUT`
+   (default to `.` aka the current directory.)
+1. If a bucket is not attached to any environment, output for that bucket is not written.
 
 ## References
 
