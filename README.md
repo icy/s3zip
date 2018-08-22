@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/icy/s3zip.svg?branch=master)](https://travis-ci.org/icy/s3zip)
+
 ## Description
 
 Compress AWS S3 policies and make them maintainable for human being.
