@@ -80,4 +80,4 @@ clean and your audit guy will be happy.
 
 ## Specification
 
-Specification is found [here](SPECIFICATION.md).
+Specification is found [here](./SPECIFICATION.md).
