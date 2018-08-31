@@ -3,8 +3,10 @@
 ## TOC
 
 * [Description](#description)
+* [Installation](#installation)
 * [Syntax](#syntax)
 * [Why-s3zip](#why-s3zip)
+* [Specification](#specification)
 
 ## Description
 
@@ -14,7 +16,6 @@ Compress 1200 lines of Json files into 120 lines of configuration.
 
 Output in JSON and/or Terraform.
 See input examples in `input/` and the output in `output/`.
-Speicification is found [here](SPECIFICATION.md).
 
 Please don't use this tool if you are not a human.
 
@@ -76,3 +77,7 @@ Take a look at `input/` directory for some examples.
 
 Problem solved. Code duplication is reduced quickly, policies are very
 clean and your audit guy will be happy.
+
+## Specification
+
+Specification is found [here](SPECIFICATION.md).
