@@ -20,6 +20,7 @@ def inspect_p(p)
     paths = [paths] if paths.is_a?(String)
     perms = dop["perm"]
 
+    next if buckets.nil?
     next unless buckets.size >= 1
     # Special macros
 
