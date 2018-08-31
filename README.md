@@ -51,7 +51,7 @@ This is clear: Every bucket needs at least one user.
 Let's say you have two buckets `s31` and `s32`, and you have several users:
 
 * Two developers in your company (`u1`, `u2`)
-* Three applications need to write to those buckets (`a1`, `a2`)
+* Two applications need to write to those buckets (`a1`, `a2`)
 * A backup application to read from those buckets (`b1`)
 
 To prepare `s3` policies for this setup, you often do as below
