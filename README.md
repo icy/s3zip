@@ -23,7 +23,7 @@ Please don't use this tool if you are not a human.
 
 A standard `Ruby` installation is required.
 
-Make the script `s3zip` executable and put to your search path.
+Make the script `s3zip` executable and put them to your search path.
 We may have `gem` support in the future.
 
 ## Syntax
