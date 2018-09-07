@@ -11,7 +11,15 @@ require 'json'
 
 def inspect_p(p)
   users = p["user"]
+  services = p["service"]
   users = [users] if users.is_a?(String) and (users != '*')
+  services = [services] if services.is_a?(String) and (services != '*')
+
+  if services
+    principals = (services == "*" ? services : {"Service" => services.sort})
+  else
+    principals = (users == "*" ? users : {"AWS" => users.sort})
+  end
   does = p["do"]
   does.each do |dop|
     buckets = (dop["bucket"] || p["bucket"])
@@ -49,6 +57,8 @@ def inspect_p(p)
           }
         end
       end
+    else
+      perms = [perms] if perms.is_a?(String)
     end
 
     ifs = (dop["if"] || p["if"]).to_s.strip
@@ -56,7 +66,7 @@ def inspect_p(p)
       pol = {
         "Sid" => "sid_" + Digest::MD5.hexdigest("#{bucket} #{paths} #{perms}#{ifs}"),
         "Effect" => "Allow",
-        "Principal" => (users == "*" ? users : {"AWS" => users.sort}),
+        "Principal" => principals,
         "Resource" => paths,
       }
       pol["Action"] = perms unless perms.nil? or perms.empty?

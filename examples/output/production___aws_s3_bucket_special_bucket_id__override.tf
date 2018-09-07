@@ -66,6 +66,21 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production___aws_s3_bucket_spe
           ]
         }
       }
+    },
+    {
+      "Sid": "sid_1ae562a01e7c368eeca08bd82246cbf1",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "sns.sns.amazonaws.com"
+        ]
+      },
+      "Resource": [
+        "${aws_s3_bucket.special_bucket.arn}"
+      ],
+      "Action": [
+        "s3:GetBucketLocation"
+      ]
     }
   ]
 }
