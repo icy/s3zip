@@ -11,6 +11,7 @@ s3zip_policy_hash     <=  "{" s3zip_policy_kv_list "}"
 s3zip_policy_kv_list  <=  s3zip_policy_kv{, s3zip_policy_kv}
 s3zip_policy_kv       <=  "if" ":" if_v |
                           "user" ":" user_v |
+                          "service" ":" service_v |
                           "do" ":" do_v |
                           "env" ":" env_v |
                           "bucket" ":" bucket_v
@@ -18,6 +19,7 @@ if_v                  <=  aws_condition_statements[1]
 env_v                 <=  array_of_string
 bucket_v              <=  string | array_of_string
 user_v                <=  string | array_of_string
+service_v             <=  string | array_of_string
 do_v                  <=  do_v_array
 do_v_array            <=  "[" do_v_policy_list "]"
 do_v_policy_list      <=  do_v_policy{, do_v_policy}
