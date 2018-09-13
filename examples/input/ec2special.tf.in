@@ -12,6 +12,10 @@
   - perm: READ
   - bucket: "some-other-buckets"
     perm: ALL
+    tf_inline: |
+      # ~~ WARNING ~~
+      # This is an inline string examples.
+      # We can add custom contents to generated Terraform file.
   - perm: ["s3:Put*", "s3:Get*"]
     path: "${aws_s3_bucket.some_bucket_for_production.arn}/foo/*"
 

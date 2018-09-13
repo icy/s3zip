@@ -14,6 +14,7 @@ s3zip_policy_kv       <=  "if" ":" if_v |
                           "service" ":" service_v |
                           "do" ":" do_v |
                           "env" ":" env_v |
+                          "tf_inline" ":" string |
                           "bucket" ":" bucket_v
 if_v                  <=  aws_condition_statements[1]
 env_v                 <=  array_of_string
@@ -28,6 +29,7 @@ do_v_kv_list          <=  do_v_kv{, do_v_kv}
 do_v_kv               <=  "if" ":" if_v |
                           "bucket" ":" bucket_v |
                           "path" ":" path_v |
+                          "tf_inline" ":" string |
                           "perm" ":" perm_v
 path_v                <=  string | array_of_string
 perm_v                <=  perm_alias | array_of_string

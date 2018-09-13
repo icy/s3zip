@@ -3,6 +3,11 @@
 # WARNING: Don't change this file manually
 resource "aws_s3_bucket_policy" "s3_bucket_policy_production_some_other_buckets" {
   bucket = "some-other-buckets"
+
+# ~~ WARNING ~~
+# This is an inline string examples.
+# We can add custom contents to generated Terraform file.
+
   policy = <<AUTO_GENERATED
 {
   "Version": "2008-10-17",

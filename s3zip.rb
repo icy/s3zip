@@ -28,6 +28,19 @@ def inspect_p(p)
     paths = [paths] if paths.is_a?(String)
     perms = dop["perm"]
 
+    tf_inline = (dop["tf_inline"] || p["tf_inline"])
+    tf_inline = tf_inline.to_s unless tf_inline.nil?
+    if tf_inline
+      buckets.each do |bucket|
+        if $tf_inlines[bucket] and (tf_inline != $tf_inlines[bucket])
+          STDERR.puts ":: WARN: Bucket '#{bucket}' already owns a different inline string"
+          STDERR.puts ":: WARN: Bucket '#{bucket}' ignores new inline string '#{tf_inline}'"
+        else
+          $tf_inlines[bucket] = tf_inline
+        end
+      end
+    end
+
     next if buckets.nil?
     next unless buckets.size >= 1
     # Special macros
@@ -92,12 +105,16 @@ end
 
 $policies = {}
 $envs = []
+$tf_inlines = {}
+
 y = YAML.load(STDIN)
 y.each(&:inspect_pol)
+
 $buckets = $policies.keys
 $tf_output = ARGV.include?("--tf")
 $ext = ($tf_output ? "tf" : "json")
 $d_output = (ENV["D_OUTPUT"].to_s.empty? ? "./" : ENV["D_OUTPUT"].to_s)
+
 $envs.each do |env|
   $buckets.each do |bucket|
     policies = Marshal.load(Marshal.dump($policies[bucket])) # deep_dup =))
@@ -116,6 +133,12 @@ $envs.each do |env|
 # WARNING: Don't change this file manually
 resource "aws_s3_bucket_policy" "s3_bucket_policy_#{fancy_bucket_name}" {
   bucket = "#{bucket}"
+EOF
+    if $tf_inlines[bucket]
+      result_tf << "\n#{$tf_inlines[bucket].strip}\n\n"
+    end
+
+    result_tf << "#{<<EOF}"
   policy = <<AUTO_GENERATED
 #{result_json}
 AUTO_GENERATED
