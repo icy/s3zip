@@ -3,6 +3,7 @@
 ## TOC
 
 * [Description](#description)
+* [Examples](#examples)
 * [Installation](#installation)
 * [Syntax](#syntax)
 * [Why-s3zip](#why-s3zip)
@@ -18,6 +19,70 @@ Output in JSON and/or Terraform.
 See input examples in `input/` and the output in `output/`.
 
 Please don't use this tool if you are not a human.
+
+## Examples
+
+See more in [Examples](examples/) directory.
+
+Input policy:
+
+```
+- user: "arn:aws:iam::${var.example_production_account_id}:root"
+  env: [dev]
+  do:
+  - perm: ALL
+    bucket: ["${aws_s3_bucket.some_bucket_for_production.id}"]
+```
+
+Output `Terraform` files
+
+```
+# ENVS: AUTO_GENERATED/{dev}
+# FILE: dev___aws_s3_bucket_some_bucket_for_production_id__override.tf
+# WARNING: Don't change this file manually
+resource "aws_s3_bucket_policy" "s3_bucket_policy_dev___aws_s3_bucket_some_bucket_for_production_id_" {
+  bucket = "${aws_s3_bucket.some_bucket_for_production.id}"
+  policy = <<AUTO_GENERATED
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "sid_333688ecda60fc955939b673acb26913",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::${var.example_production_account_id}:root"
+        ]
+      },
+      "Resource": [
+        "arn:aws:s3:::${aws_s3_bucket.some_bucket_for_production.id}"
+      ],
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
+      ]
+    },
+    {
+      "Sid": "sid_2bc1a7835a0e262abb3009a8d3e5518c",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::${var.example_production_account_id}:root"
+        ]
+      },
+      "Resource": [
+        "arn:aws:s3:::${aws_s3_bucket.some_bucket_for_production.id}/*"
+      ],
+      "Action": [
+        "s3:*"
+      ]
+    }
+  ]
+}
+AUTO_GENERATED
+}
+
+```
 
 ## Installation
 
