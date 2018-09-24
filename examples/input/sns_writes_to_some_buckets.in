@@ -1,0 +1,8 @@
+- service: "sns.amazonaws.com"
+  bucket: "some_bucket_to_store_sns_messages"
+  env: [devops]
+  do:
+  - perm: ["s3:GetBucketAcl", "s3:GetBucketLocation"]
+    path: "${module.gfg_s3_private_bucket.bucket_arn}"
+  - perm: "s3:PutObject"
+    path: "${module.gfg_s3_private_bucket.bucket_arn}/*"
