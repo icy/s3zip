@@ -121,7 +121,7 @@ $envs.each do |env|
     policies["Statement"] = policies["Statement"].select do |statement|
       envs = statement.delete("Env")
       envs.include?(env)
-    end
+    end.sort{|pp,qq| pp["Sid"] <=> qq["Sid"]}
 
     next if policies["Statement"].empty?
 

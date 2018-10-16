@@ -28,15 +28,15 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production___aws_s3_bucket_spe
       }
     },
     {
-      "Sid": "sid_640398036d32a878e5317f24d323e3d0",
+      "Sid": "sid_4cd133790300120921c9c27f787ea75f",
       "Effect": "Allow",
       "Principal": "*",
       "Resource": [
-        "${aws_s3_bucket.some_bucket_for_production.arn}/foo/*"
+        "arn:aws:s3:::${aws_s3_bucket.special_bucket.id}/*"
       ],
       "Action": [
-        "s3:Put*",
-        "s3:Get*"
+        "s3:Get*",
+        "s3:List*"
       ],
       "Condition": {
         "ForAnyValue:StringLike": {
@@ -48,15 +48,15 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production___aws_s3_bucket_spe
       }
     },
     {
-      "Sid": "sid_4cd133790300120921c9c27f787ea75f",
+      "Sid": "sid_640398036d32a878e5317f24d323e3d0",
       "Effect": "Allow",
       "Principal": "*",
       "Resource": [
-        "arn:aws:s3:::${aws_s3_bucket.special_bucket.id}/*"
+        "${aws_s3_bucket.some_bucket_for_production.arn}/foo/*"
       ],
       "Action": [
-        "s3:Get*",
-        "s3:List*"
+        "s3:Put*",
+        "s3:Get*"
       ],
       "Condition": {
         "ForAnyValue:StringLike": {
