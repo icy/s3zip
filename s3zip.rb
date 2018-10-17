@@ -77,7 +77,7 @@ def inspect_p(p)
     ifs = (dop["if"] || p["if"]).to_s.strip
     w_buckets.each do |bucket|
       pol = {
-        "Sid" => "sid_" + Digest::MD5.hexdigest("#{bucket} #{paths} #{perms}#{ifs}"),
+        "Sid" => "sid_" + Digest::MD5.hexdigest("#{principals}#{bucket}#{paths}#{perms}#{ifs}"),
         "Effect" => "Allow",
         "Principal" => principals,
         "Resource" => paths,
