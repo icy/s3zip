@@ -13,15 +13,14 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production_some_other_buckets"
   "Version": "2008-10-17",
   "Statement": [
     {
-      "Sid": "sid_6bd1d6f4cb5b82c85b19f7df96d39085",
+      "Sid": "sid_8af5638b1d4585f98dc9470a4df95e2e",
       "Effect": "Allow",
       "Principal": "*",
       "Resource": [
-        "arn:aws:s3:::some-other-buckets"
+        "arn:aws:s3:::some-other-buckets/*"
       ],
       "Action": [
-        "s3:ListBucket",
-        "s3:GetBucketLocation"
+        "s3:*"
       ],
       "Condition": {
         "ForAnyValue:StringLike": {
@@ -33,14 +32,15 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production_some_other_buckets"
       }
     },
     {
-      "Sid": "sid_f005d2ad1f594b661af410bc89db0507",
+      "Sid": "sid_ee771c8c716636d4875a192bf6d9c4a2",
       "Effect": "Allow",
       "Principal": "*",
       "Resource": [
-        "arn:aws:s3:::some-other-buckets/*"
+        "arn:aws:s3:::some-other-buckets"
       ],
       "Action": [
-        "s3:*"
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
       ],
       "Condition": {
         "ForAnyValue:StringLike": {

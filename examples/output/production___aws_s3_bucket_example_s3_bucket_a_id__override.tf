@@ -8,7 +8,7 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production___aws_s3_bucket_exa
   "Version": "2008-10-17",
   "Statement": [
     {
-      "Sid": "sid_c16ca8625a919dd7c9f49d1a4c833951",
+      "Sid": "sid_e9b45ca4095e784e80b15c6b248cb752",
       "Effect": "Allow",
       "Principal": {
         "AWS": [
@@ -27,7 +27,7 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy_production___aws_s3_bucket_exa
       ]
     },
     {
-      "Sid": "sid_def0be6f61656646ad0798790a01a819",
+      "Sid": "sid_fbaf2414892555df47b73d74f9e88cf2",
       "Effect": "Allow",
       "Principal": {
         "AWS": [
